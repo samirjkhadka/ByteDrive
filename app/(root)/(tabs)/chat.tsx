@@ -1,10 +1,10 @@
 import React from 'react'
+import { Text } from 'react-native'
 
-type Props = {}
 
-const chat = (props: Props) => {
+const chat = () => {
   return (
-    <div>chat</div>
+    <Text>Chat</Text>
   )
 }
 
