@@ -11,7 +11,7 @@ const Home = () => {
     return <Redirect href="./(root)/(tabs)/home)" />
   }
   else {
-    return <Redirect href="./(auth)/sign-in" />
+    return <Redirect href="./(auth)/welcome" />
   }
   //return (
  

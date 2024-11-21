@@ -1,5 +1,5 @@
 import { icons, images } from "@/constants";
-import { Image, ScrollView, View, Text } from "react-native";
+import { Image, ScrollView, View, Text, Alert } from "react-native";
 
 import InputField from "@/components/InputField";
 import { useState } from "react";
@@ -34,7 +34,8 @@ const signIn = () => {
         console.error(JSON.stringify(signInAttempt, null, 2));
       }
     } catch (err: any) {
-      console.error(JSON.stringify(err, null, 2));
+     // console.error(JSON.stringify(err, null, 2));
+      Alert.alert(err.errors[0].longMessage);
     }
   }, [isLoaded, form.email, form.password]);
 
