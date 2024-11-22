@@ -8,6 +8,7 @@ import CustomButton from "@/components/CustomButton";
 import { Link, router } from "expo-router";
 import OAuth from "@/components/oAuth";
 import { useSignUp } from "@clerk/clerk-expo";
+import { fetchAPI } from "@/lib/fetch";
 
 const signUp = () => {
   const [form, setForm] = useState({
@@ -55,6 +56,14 @@ const signUp = () => {
 
       if (completeSignUp.status === "complete") {
         //TODO:create a database user!
+        await fetchAPI("/(api)/user", {
+          method: "POST",
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            clerkId: completeSignUp.createdUserId,
+          }),
+        });
 
         await setActive({ session: completeSignUp.createdSessionId });
         setVerification({ ...verification, state: "success" });
